@@ -1,8 +1,10 @@
+import Expo from 'expo';
 import {Container, StyleProvider, Content} from 'native-base';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import getTheme from './native-base-theme/components';
+import HomeScreen from './src/components/screens/HomeScreen/index.js'
 
 export default class App extends React.Component {
 
@@ -10,7 +12,7 @@ export default class App extends React.Component {
   super();
   this.state = {
     isReady: false
-  };
+    };
   }
   async componentWillMount() {
     await Expo.Font.loadAsync({
@@ -22,15 +24,11 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <StyleProvider  style={getTheme()}>
-        <View style = {styles.container}>
-           <Text>Open up App.js to start working on your app!</Text>
-           <Text>Changes you make will automatically reload.</Text>
-           <Text>Shake your phone to open the developer menu.</Text>
-         </View>
-      </StyleProvider>
-    );
+
+    if (!this.state.isReady) {
+      return <Expo.AppLoading />;
+    }
+    return <HomeScreen />;
   }
 }
 
