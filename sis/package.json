@@ -25,6 +25,7 @@
     "react-native": "~0.54.1",
     "react-native-elements": "^0.19.1",
     "react-native-multiple-select-list": "^1.0.4",
+    "react-native-timeago": "^0.4.0",
     "react-navigation": "^1.5.11"
   }
 }

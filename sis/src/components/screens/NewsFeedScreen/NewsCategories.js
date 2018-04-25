@@ -26,16 +26,21 @@ const categoryList = {
   "125":"Urban and Regional Planning"
 }
 
+const selectedCategories = [];
+
 export default class NewsCategories extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
   static navigationOptions = ({ navigation }) => ({
     header: (
       <View style={{paddingTop: Expo.Constants.statusBarHeight}}>
           <Header>
             <Left>
               <Button transparent onPress={() =>
-                navigation.navigate(
-                  'News',  "Peter" 
-                )
+                  navigation.navigate( 'News',  {feeds: selectedCategories} )
                 }>
                 <Icon name="arrow-back" />
               </Button>
@@ -59,7 +64,7 @@ export default class NewsCategories extends React.Component {
             placeholder={"Search"}
             placeholderTextColor={'#757575'}
             returnValue={"label"} // label or value
-            callback={(res)=>{ console.log(res) }} // callback, array of selected items
+            callback={(res) => selectedCategories = res  } // callback, array of selected items
             rowBackgroundColor={"#eee"}
             rowHeight={40}
             rowRadius={5}
@@ -67,8 +72,7 @@ export default class NewsCategories extends React.Component {
             iconSize={30}
             selectedIconName={"ios-checkmark-circle-outline"}
             unselectedIconName={"ios-radio-button-off-outline"}
-
-            selected={[1,2]} // list of options which are selected by default
+            selected={selectedCategories} // list of options which are selected by default
           />
         </Content>
       </Container>

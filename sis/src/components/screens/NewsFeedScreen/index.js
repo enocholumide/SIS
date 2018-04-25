@@ -3,6 +3,7 @@ import { StackNavigator } from "react-navigation";
 
 import News from "./NewsFeed.js";
 import NewsCategories from "./NewsCategories.js";
+import NewsItem from "./NewsItem.js"
 
 export default (DrawNav = StackNavigator(
   {
@@ -10,6 +11,10 @@ export default (DrawNav = StackNavigator(
       screen: News,
       navigationOptions: { header: false }
      },
+     NewsItem: {
+       screen: NewsItem,
+       navigationOptions: { header: false }
+      },
     NewsCategories: {
       screen: NewsCategories,
     },
