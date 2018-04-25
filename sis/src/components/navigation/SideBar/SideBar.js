@@ -1,6 +1,8 @@
 import React from "react";
 import { AppRegistry, Image, StatusBar, View } from "react-native";
-import { Divider } from 'react-native-elements';
+
+import CustomMultiPicker from "react-native-multiple-select-list"
+
 import {
   Button,
   Text,
@@ -13,7 +15,7 @@ import {
 
 const main_routes = [
   {
-    title: 'News feed',
+    title: 'News',
     icon: {name: 'rss-feed', type: 'MaterialIcons'}
   },
   {
@@ -58,12 +60,18 @@ const other_routes = [
   },
 ]
 
+const userList = {
+  "123":"Tom",
+  "124":"Michael",
+  "125":"Christin"
+}
+
+
 export default class SideBar extends React.Component {
 
 
   constructor(props){
     super(props);
-
   }
 
   render() {
@@ -98,12 +106,13 @@ export default class SideBar extends React.Component {
             }}
           />
           {this.renderList(main_routes, 150)}
-          <Divider />
+
           {this.renderList(other_routes, 0)}
         </Content>
       </Container>
     );
   }
+
 
   renderList(list, marginTop){
     return(
@@ -114,7 +123,7 @@ export default class SideBar extends React.Component {
           return (
             <ListItem
               button
-              onPress={() => this.props.navigation.navigate(data)}
+              onPress={() => this.props.navigation.navigate(data.title)}
               style={{borderBottomWidth: 0}} >
               <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Icon name={data.icon.name} type={data.icon.type} style={{color:'gray', fontSize: 18, marginRight: 18}}/>
@@ -125,9 +134,5 @@ export default class SideBar extends React.Component {
         }}
       />
     )
-  }
-
-  navigateFromList(data) {
-
   }
 }

@@ -16,10 +16,13 @@ import {
 } from "native-base";
 import Expo from 'expo'
 
-export default class HomeScreen extends React.Component {
+export default class NewsFeed extends React.Component {
+
   constructor(props){
     super(props);
+    console.log(this.props)
   }
+
   render() {
     return (
       <Container style={{paddingTop: Expo.Constants.statusBarHeight}}>
@@ -33,7 +36,7 @@ export default class HomeScreen extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title>Home Screen</Title>
+            <Title>News Feed here</Title>
           </Body>
           <Right />
         </Header>
@@ -43,8 +46,8 @@ export default class HomeScreen extends React.Component {
             rounded
             dark
             style={{ marginTop: 10 }}
-            onPress={() => this.props.navigation.navigate("News")}>
-            <Text>Goto NewsFeed Here</Text>
+            onPress={() => this.props.navigation.navigate("NewsCategories")}>
+            <Text>Goto Categories</Text>
           </Button>
         </Content>
       </Container>
