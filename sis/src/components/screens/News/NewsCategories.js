@@ -19,6 +19,8 @@ import {
   View
 } from "native-base";
 
+import { Theme, Styles } from '../../../appStyles.js'
+
 const categoryList = {
   "122":"Architecture",
   "123":"Computer Science",
@@ -34,29 +36,23 @@ export default class NewsCategories extends React.Component {
     super(props);
   }
 
-  static navigationOptions = ({ navigation }) => ({
-    header: (
-      <View style={{paddingTop: Expo.Constants.statusBarHeight}}>
-          <Header>
-            <Left>
-              <Button transparent onPress={() =>
-                  navigation.navigate( 'News',  {feeds: selectedCategories} )
-                }>
-                <Icon name="arrow-back" />
-              </Button>
-            </Left>
-            <Body>
-              <Title>Categories</Title>
-            </Body>
-            <Right />
-          </Header>
-        </View>
-    )
-  });
   render() {
     return (
-      <Container  >
-        <Content padder >
+      <Container style={[Styles.ContainerStyle]}>
+        <Header hasTabs style={Styles.HeaderStyle}>
+          <Left>
+            <Button transparent onPress={() =>
+                this.props.navigation.navigate( 'News',  {feeds: selectedCategories} )
+              }>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Categories</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content padder style={{backgroundColor: 'white'}}>
           <CustomMultiPicker
             options={categoryList}
             search={true} // should show search bar?
@@ -65,13 +61,13 @@ export default class NewsCategories extends React.Component {
             placeholderTextColor={'#757575'}
             returnValue={"label"} // label or value
             callback={(res) => selectedCategories = res  } // callback, array of selected items
-            rowBackgroundColor={"#eee"}
+            rowBackgroundColor={"white"}
             rowHeight={40}
             rowRadius={5}
-            iconColor={"#00a2dd"}
+            iconColor={Theme.primaryColor}
             iconSize={30}
-            selectedIconName={"ios-checkmark-circle-outline"}
-            unselectedIconName={"ios-radio-button-off-outline"}
+            selectedIconName={"ios-checkmark-outline"}
+            //unselectedIconName={"ios-radio-button-off-outline"}
             selected={selectedCategories} // list of options which are selected by default
           />
         </Content>

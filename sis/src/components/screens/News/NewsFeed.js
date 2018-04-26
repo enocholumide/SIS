@@ -2,6 +2,7 @@ import React from "react";
 import { StatusBar, View, Image, StyleSheet } from "react-native";
 import { Constants } from 'expo';
 import NewsItem from './NewsItem.js'
+import { DateOptions, Theme, Styles } from '../../../appStyles.js'
 
 import {
   Button,
@@ -15,34 +16,23 @@ import {
   Title,
   Left,
   Icon,
-  Right, Tab, Tabs, ScrollableTab,
-                    List,
-                    ListItem
+  Right, Tab, Tabs, ScrollableTab, List, ListItem
 } from "native-base";
-import Expo from 'expo';
 
-const dateOptions = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-};
+import Expo from 'expo';
 
 export default class NewsFeed extends React.Component {
 
   constructor(props){
     super(props);
-    console.log(this.props.navigation)
     this.state = {
-      feeds : ['News']
+      feeds : ['Feed']
     }
   }
 
   render() {
 
-    var feeds = ['News'];
+    var feeds = ['Feed'];
     if(this.props.navigation.state.params){
       if(this.props.navigation.state.params.feeds){
         feeds = feeds.concat(this.props.navigation.state.params.feeds);
@@ -51,12 +41,12 @@ export default class NewsFeed extends React.Component {
     this.state.feeds = feeds;
 
     return (
-      <Container style={{paddingTop: Expo.Constants.statusBarHeight, backgroundColor: '#E91E63'}}>
-        <Header hasTabs style={{backgroundColor: '#E91E63'}}>
+      <Container style={Styles.ContainerStyle}>
+        <Header hasTabs style={Styles.HeaderStyle}>
           <Left>
             <Button
               transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen", this.state)}>
+              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
               <Icon name="menu" />
             </Button>
           </Left>
@@ -73,14 +63,14 @@ export default class NewsFeed extends React.Component {
         </Header>
 
         <Tabs
-          style={{backgroundColor:'#E91E63',justifyContent:'flex-start'}}
+          style={{backgroundColor:Theme.primaryColor,justifyContent:'flex-start'}}
           renderTabBar={()=> <ScrollableTab />} >
             {feeds.map((feed) => (
               <Tab
                   heading={feed}
                   key={feeds.indexOf(feed)}
-                  tabStyle={{backgroundColor:'#E91E63'}}
-                  activeTabStyle={{backgroundColor:'#E91E63'}} >
+                  tabStyle={{backgroundColor:Theme.primaryColor}}
+                  activeTabStyle={{backgroundColor:Theme.primaryColor}} >
                 {this.renderNewsItem(feed)}
               </Tab>
             ))}
@@ -114,15 +104,6 @@ export default class NewsFeed extends React.Component {
       }
     ];
 
-    let dateOptions = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    };
-
     return (
       <Content>
         <List
@@ -135,14 +116,13 @@ export default class NewsFeed extends React.Component {
                 onPress={() => this.props.navigation.navigate('NewsItem', {feed: feed})}
                 style={{borderBottomWidth: 1}} >
                 <View style={{flexDirection: 'row', flex: 1}}>
-                  <Thumbnail square source={{uri: feed.thumbnailUrl}} />
+                  <Thumbnail large square source={{uri: feed.thumbnailUrl}} />
                   <Body>
-                    <Text note numberOfLines={1}>{(new Date(feed.created_at)).toLocaleString('en-us', dateOptions)}</Text>
+                    <Text note numberOfLines={1}>{(new Date(feed.created_at)).toLocaleString('en-us', DateOptions)}</Text>
                     <Text numberOfLines={2} style={{fontWeight: 'bold'}}>{feed.title}</Text>
+                    <Text note numberOfLines={1}>{feed.category}</Text>
                   </Body>
-
                 </View>
-
               </ListItem>
             );
           }}

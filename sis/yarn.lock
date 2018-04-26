@@ -5607,6 +5607,12 @@ react-native-scripts@1.13.2:
     rimraf "^2.6.1"
     xdl "48.1.4"
 
+react-native-search-box@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/react-native-search-box/-/react-native-search-box-0.0.16.tgz#10927305010562250861889c27701a75e90f837c"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-svg@6.2.2:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-6.2.2.tgz#5803cddce374a542b4468c38a2474fca32080685"

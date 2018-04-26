@@ -4,7 +4,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import getTheme from './native-base-theme/components';
-import HomeScreen from './src/components/screens/HomeScreen/index.js'
+
+import Navigator from './src/components/navigation/Navigation.js'
 
 export default class App extends React.Component {
 
@@ -28,7 +29,7 @@ export default class App extends React.Component {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
     }
-    return <HomeScreen />;
+    return <Navigator />;
   }
 }
 
