@@ -77,9 +77,9 @@ export default class GradesDetails extends React.Component {
      */
     findCurrentIndex = (course, semesterCourses) => {
 
-        for (var item of semester.courses) {
+        for (var item of semesterCourses.courses) {
             if (item.course_id === course.course_id) {
-                return semester.courses.indexOf(item);
+                return semesterCourses.courses.indexOf(item);
             }
         }
 
@@ -177,9 +177,10 @@ export default class GradesDetails extends React.Component {
     }
 
     /**
-     * 
+     * Animates the bar chart with the new width
+     * @param newWidths : the new width of the bars, they must have the same keys in the grade indicators too 
      */
-    handleAnimation = () => {
+    handleAnimation = (newWidths) => {
 
         const timing = Animated.timing
 
@@ -231,7 +232,7 @@ export default class GradesDetails extends React.Component {
                                 <Icon name="ios-arrow-back" />
                             </Button>
 
-                            <Text> {course.course_title.length > 25 ? course.course_title.substring(0, 25) + '.' : course.course_title }</Text>
+                            <Text> {course.course_title.length > 25 ? course.course_title.substring(0, 25) + '.' : course.course_title}</Text>
 
                             <Button
                                 transparent

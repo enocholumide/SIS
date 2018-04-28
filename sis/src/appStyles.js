@@ -23,7 +23,9 @@ export const Styles = StyleSheet.create({
     backgroundColor: Theme.primaryColor,
     flex: 1
   },
-  ContentStyle : {
-    backgroundColor: 'white'
+  ContentStyle : { 
+    backgroundColor: '#f4f4f4', 
+    flex: 1, 
+    padding: 10 
   }
 });

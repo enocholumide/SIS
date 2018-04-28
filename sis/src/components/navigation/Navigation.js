@@ -7,10 +7,15 @@ import { Root } from "native-base";
 import NewsScreen from '../screens/News/index.js';
 import PeopleScreen from '../screens/People/index.js';
 import LecturesScreen from '../screens/Lectures/index.js';
-import GradesScreen from '../screens/Grades/index.js'
+import GradesScreen from '../screens/Grades/index.js';
+import ExamsScreen from '../screens/Exams/index.js'
 
 const AppNavigator = DrawerNavigator (
   {
+    Exams: {
+      screen: ExamsScreen,
+      navigationOptions: { header: false }
+     },
     News: {
       screen: NewsScreen,
       navigationOptions: { header: false }
@@ -26,13 +31,14 @@ const AppNavigator = DrawerNavigator (
      Grades: {
       screen: GradesScreen,
       navigationOptions: { header: false }
-     }
+     },
+
   },
   {
     contentComponent: props => <SideBar {...props} />
   },
   {
-    initialRouteName: "News",
+    initialRouteName: "Exams",
     headerMode: 'screen'
   }
 );
