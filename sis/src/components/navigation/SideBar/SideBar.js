@@ -72,8 +72,6 @@ export default class SideBar extends React.Component {
 
   constructor(props){
     super(props);
-    console.log('Drawer Open')
-    console.log(props)
   }
 
   render() {

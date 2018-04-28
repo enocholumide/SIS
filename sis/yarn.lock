@@ -2653,6 +2653,10 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
 
+faker@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-4.1.0.tgz#1e45bbbecc6774b3c195fad2835109c6d748cc3f"
+
 fancy-log@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/fancy-log/-/fancy-log-1.3.2.tgz#f41125e3d84f2e7d89a43d06d958c8f78be16be1"
@@ -2803,6 +2807,10 @@ find-up@^2.0.0, find-up@^2.1.0:
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
   dependencies:
     locate-path "^2.0.0"
+
+flow-bin@^0.70.0:
+  version "0.70.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.70.0.tgz#080ae83a997f2b4ddb3dc2649bf13336825292b5"
 
 follow-redirects@^1.2.3:
   version "1.4.1"
@@ -4259,6 +4267,10 @@ lodash.map@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.map/-/lodash.map-4.6.0.tgz#771ec7839e3473d9c4cde28b19394c3562f4f6d3"
 
+lodash.merge@^4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
+
 lodash.omit@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
@@ -4699,7 +4711,7 @@ mkdirp@*, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@2.x.x, moment@^2.10.6:
+moment@2.x.x, moment@^2.10.6, moment@^2.17.1, moment@^2.22.1:
   version "2.22.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
 
@@ -5501,9 +5513,31 @@ react-lifecycles-compat@^1.0.2:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-1.1.4.tgz#fc005c72849b7ed364de20a0f64ff58ebdc2009a"
 
+react-lifecycles-compat@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.2.tgz#00a23160eec17a43b94dd74f95d44a1a2c3c5ec1"
+
+react-moment@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.7.0.tgz#9ccb5c87be683d08c253b48469167443f09c3d89"
+
+react-native-animatable@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.4.tgz#b5fb7657e8f6edadbc26697057a327fb920b3039"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-branch@2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
+
+react-native-calendar-strip@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-calendar-strip/-/react-native-calendar-strip-1.3.3.tgz#886747788be4f77f82b3b632cf564889eddb54e6"
+  dependencies:
+    moment "^2.17.1"
+    prop-types "^15.6.0"
+    react-lifecycles-compat "^2.0.0"
 
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
@@ -5612,6 +5646,13 @@ react-native-search-box@^0.0.16:
   resolved "https://registry.yarnpkg.com/react-native-search-box/-/react-native-search-box-0.0.16.tgz#10927305010562250861889c27701a75e90f837c"
   dependencies:
     prop-types "^15.5.10"
+
+react-native-search-header@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/react-native-search-header/-/react-native-search-header-0.2.6.tgz#9ede2bc119d0a9da5209beb59c09615937c4bb2c"
+  dependencies:
+    lodash.merge "^4.6.1"
+    react-native-animatable "^1.2.4"
 
 react-native-svg@6.2.2:
   version "6.2.2"

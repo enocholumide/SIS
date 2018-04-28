@@ -2,7 +2,8 @@ import React from "react";
 import { StatusBar, View, Image, StyleSheet } from "react-native";
 import { Constants } from 'expo';
 import NewsItem from './NewsItem.js'
-import { DateOptions, Theme, Styles } from '../../../appStyles.js'
+import { DateOptions, Theme, Styles } from '../../../appStyles.js';
+import moment from 'moment';
 
 import {
   Button,
@@ -118,7 +119,7 @@ export default class NewsFeed extends React.Component {
                 <View style={{flexDirection: 'row', flex: 1}}>
                   <Thumbnail large square source={{uri: feed.thumbnailUrl}} />
                   <Body>
-                    <Text note numberOfLines={1}>{(new Date(feed.created_at)).toLocaleString('en-us', DateOptions)}</Text>
+                    <Text note numberOfLines={1}>{moment(feed.created_at).format("dddd, MMMM Do YYYY")}</Text>
                     <Text numberOfLines={2} style={{fontWeight: 'bold'}}>{feed.title}</Text>
                     <Text note numberOfLines={1}>{feed.category}</Text>
                   </Body>

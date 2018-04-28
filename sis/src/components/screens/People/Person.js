@@ -51,17 +51,17 @@ export default class NewsItem extends React.Component {
           <FlatList
              keyExtractor={(item, index) => index.toString()}
              data={details}
-             renderItem = {({item}) =>
-             <ListItem icon>
-             <Left>
-                <Button style={{ backgroundColor: item.icon.color }}>
-                  <Icon name={item.icon.name} type={item.icon.type} />
-                </Button>
-              </Left>
-              <Body>
-                <Text>{item.text}</Text>
-              </Body>
-            </ListItem>
+             renderItem = {({item, index}) =>
+              <ListItem icon>
+              <Left>
+                  <Button style={{ backgroundColor: item.icon.color }}>
+                    <Icon name={item.icon.name} type={item.icon.type} />
+                  </Button>
+                </Left>
+                <Body>
+                  <Text style={{fontWeight: index == 0 ? 'bold' : 'normal'}}>{item.text}</Text>
+                </Body>
+              </ListItem>
              }
            />
         </Content>
