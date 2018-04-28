@@ -6,7 +6,8 @@ import { Root } from "native-base";
 
 import NewsScreen from '../screens/News/index.js';
 import PeopleScreen from '../screens/People/index.js';
-import LecturesScreen from '../screens/Lectures/index.js'
+import LecturesScreen from '../screens/Lectures/index.js';
+import GradesScreen from '../screens/Grades/index.js'
 
 const AppNavigator = DrawerNavigator (
   {
@@ -20,6 +21,10 @@ const AppNavigator = DrawerNavigator (
      },
      Lectures: {
       screen: LecturesScreen,
+      navigationOptions: { header: false }
+     },
+     Grades: {
+      screen: GradesScreen,
       navigationOptions: { header: false }
      }
   },
