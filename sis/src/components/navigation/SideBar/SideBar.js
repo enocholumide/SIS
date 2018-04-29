@@ -72,7 +72,14 @@ export default class SideBar extends React.Component {
 
   constructor(props){
     super(props);
+
   }
+
+
+
+componentDidMount() {
+  console.log('Side Bar did mount')
+}
 
   render() {
 

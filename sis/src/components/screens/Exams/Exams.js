@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar, TouchableHighlight, View, Image } from "react-native";
+import { StatusBar, TouchableHighlight, View, Image, AsyncStorage } from "react-native";
 import TimeAgo from 'react-native-timeago';
 import ModalWrapper from 'react-native-modal-wrapper'
 import {
@@ -11,7 +11,8 @@ import {
     Title,
     Left, List,
     Icon,
-    Right
+    Right,
+    Spinner
 } from "native-base";
 import Expo from 'expo'
 import { Overlay } from 'react-native-elements'
@@ -20,46 +21,44 @@ import moment from 'moment';
 
 import Modal from "react-native-modal";
 
-const exams = [
-    {
-        course_id: 'GMCM 2404',
-        title: 'GIS Programming',
-        date: '2018-09-25',
-        from: '05:30',
-        to: '06:30',
-        location: 'ETF Building Room 864',
-        note: 'No laptops allowed, bring only writing materials'
-    },
-
-    {
-        course_id: 'GMCM 534',
-        title: 'Statistics and Reference System',
-        date: '2018-09-25',
-        from: '02:30',
-        to: '03:30',
-        location: 'Engineering Building Room 204',
-        note: 'Non-programmable calulators and writing materials are allowed'
-    },
-
-    {
-        course_id: 'GMCM 2487',
-        title: 'Geomarketing Techniques',
-        date: '2018-09-15',
-        from: '05:30',
-        to: '06:30',
-        location: 'ETF Building Room 864',
-        note: 'Bring only writing materials'
-    }
-]
-
 export default class Exams extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            exams: this.sortExams(exams),
+            exams: [],
             modalVisible: false,
-            exam: null
+            exam: null,
+            isReady: false
+        }
+    }
+
+    componentWillMount() {
+
+        this.setExamsList();
+
+    }
+
+    /** 
+     * Gets and sets the list of exams to be displayed.
+     * This time from the local storage
+    */
+    async setExamsList() {
+        try {
+
+            const userExams = await AsyncStorage.getItem('exams');
+
+            if (userExams !== null) {
+
+                //console.log(JSON.parse(userExams))
+
+                this.setState({ exams: this.sortExams(JSON.parse(userExams)), isReady: true })
+
+            } else
+                console.log('No data');
+        } catch (error) {
+            // Error retrieving data
+            console.log('Error retrieving your data')
         }
     }
 
@@ -106,39 +105,50 @@ export default class Exams extends React.Component {
 
         let exams = this.state.exams;
 
-        return (
-            <Container style={Styles.ContainerStyle}>
-                <Header hasTabs style={Styles.HeaderStyle}>
-                    <Left>
-                        <Button
-                            transparent
-                            onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-                            <Icon name="menu" />
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title>Exams</Title>
-                    </Body>
-                    <Right />
-                </Header>
+        if (this.state.isReady) {
 
-                {exams === undefined || exams === null || exams.length < 1 ?
+            return (
+                <Container style={Styles.ContainerStyle}>
+                    <Header hasTabs style={Styles.HeaderStyle}>
+                        <Left>
+                            <Button
+                                transparent
+                                onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+                                <Icon name="menu" />
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Title>Exams</Title>
+                        </Body>
+                        <Right />
+                    </Header>
 
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
+                    {exams === undefined || exams === null || exams.length < 1 ?
 
-                        <Icon name='pencil-box' type='MaterialCommunityIcons' style={{ fontSize: 80, color: 'gray' }} />
-                        <Text>No upcoming exams found!</Text>
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
 
-                    </View>
+                            <Icon name='pencil-box' type='MaterialCommunityIcons' style={{ fontSize: 80, color: 'gray' }} />
+                            <Text>No upcoming exams found!</Text>
 
-                    :
+                        </View>
 
-                    this.renderExams()
+                        :
 
-                }
+                        this.renderExams()
 
-            </Container>
-        );
+                    }
+
+                </Container>
+            );
+        } else {
+            return (
+                <View style={[Styles.ContentStyle, { justifyContent: 'center', alignItems: 'center' }]}>
+                    <Spinner />
+                    <Text>Loading exams...</Text>
+                </View>
+
+            )
+        }
     }
 
     renderExamDetails = () => {
@@ -158,7 +168,7 @@ export default class Exams extends React.Component {
                     backdropTransitionOutTiming={500}
                     onSwipe={() => this.setState({ modalVisible: false })}
                     swipeDirection="down">
-                    
+
                     <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
                         <TouchableHighlight
                             onPress={() => this.setState({ modalVisible: false, exam: null })}

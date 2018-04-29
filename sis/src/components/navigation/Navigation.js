@@ -10,12 +10,12 @@ import LecturesScreen from '../screens/Lectures/index.js';
 import GradesScreen from '../screens/Grades/index.js';
 import ExamsScreen from '../screens/Exams/index.js'
 
-const AppNavigator = DrawerNavigator (
+const AppNavigator = DrawerNavigator(
   {
     Exams: {
       screen: ExamsScreen,
       navigationOptions: { header: false }
-     },
+    },
     News: {
       screen: NewsScreen,
       navigationOptions: { header: false }
@@ -23,30 +23,44 @@ const AppNavigator = DrawerNavigator (
     People: {
       screen: PeopleScreen,
       navigationOptions: { header: false }
-     },
-     Lectures: {
+    },
+    Lectures: {
       screen: LecturesScreen,
       navigationOptions: { header: false }
-     },
-     Grades: {
+    },
+    Grades: {
       screen: GradesScreen,
       navigationOptions: { header: false }
-     },
+    },
 
   },
   {
     contentComponent: props => <SideBar {...props} />
   },
   {
-    initialRouteName: "Exams",
+    initialRouteName: "News",
     headerMode: 'screen'
   }
 );
 
+export default class Navigation extends React.Component {
 
-export default () =>
-  <Root>
-    <AppNavigator />
-  </Root>;
 
- 
+  constructor(props) {
+    super(props);
+
+    
+    
+
+  }
+
+  render() {
+    return (
+      <Root>
+        <AppNavigator />
+      </Root>
+    )
+  }
+}
+
+

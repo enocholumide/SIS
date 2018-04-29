@@ -5639,9 +5639,9 @@ react-native-safe-module@^1.1.0:
   dependencies:
     dedent "^0.6.0"
 
-react-native-scripts@1.13.2:
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/react-native-scripts/-/react-native-scripts-1.13.2.tgz#ce010437cce8d21262084ca78bdca9d7b934f8f8"
+react-native-scripts@1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-scripts/-/react-native-scripts-1.12.0.tgz#acbdb8bc8f7668e2dad15223c8777b99ba481966"
   dependencies:
     "@expo/bunyan" "1.8.10"
     babel-runtime "^6.9.2"
@@ -5657,7 +5657,7 @@ react-native-scripts@1.13.2:
     progress "^2.0.0"
     qrcode-terminal "^0.11.0"
     rimraf "^2.6.1"
-    xdl "48.1.4"
+    xdl "48.1.0"
 
 react-native-search-box@^0.0.16:
   version "0.0.16"
@@ -7179,9 +7179,9 @@ xcode@^0.9.1:
     simple-plist "^0.2.1"
     uuid "3.0.1"
 
-xdl@48.1.4:
-  version "48.1.4"
-  resolved "https://registry.yarnpkg.com/xdl/-/xdl-48.1.4.tgz#95e75ab3537034508e5d0e1cb476c8c661df43b4"
+xdl@48.1.0:
+  version "48.1.0"
+  resolved "https://registry.yarnpkg.com/xdl/-/xdl-48.1.0.tgz#eeb03d6938cfb168524a0fe0191db861669fce11"
   dependencies:
     "@expo/bunyan" "^1.8.10"
     "@expo/json-file" "^5.3.0"
