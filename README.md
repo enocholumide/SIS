@@ -1,6 +1,6 @@
 # Student Information Managament System APP
 ## (Work in progress)
-... Student Information Managament System mobile APP created with react native, works on IOS and Android. It is intended to be portable and easily configurable for an instiution that might be interested in reaching her students directly via mobile.
+...Student Information Managament System mobile APP created with react native, works on IOS and Android. It is intended to be portable and easily configurable for an instiution that might be interested in reaching her students directly via mobile.
 
 ## Features:
 + Download of student's current transcript of records
@@ -12,4 +12,4 @@
 + Student job posting and applications with current transcript
 + .. and many more
 
-![Work in progress] (https://user-images.githubusercontent.com/24214602/39958190-f5b5ee8a-55ff-11e8-9479-7a0415e97964.gif)
+![Work in progress](https://user-images.githubusercontent.com/24214602/39958190-f5b5ee8a-55ff-11e8-9479-7a0415e97964.gif)
